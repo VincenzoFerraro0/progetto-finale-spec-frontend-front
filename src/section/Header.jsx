@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Logo from '../assets/img/logo.png'
 import { NavLink, Link } from 'react-router-dom'
 export default function Header() {
@@ -11,12 +10,12 @@ export default function Header() {
     ]
 
     return (
-        <header className='px-9 bg-gradient-to-l from-[#341a67] to-[#f30086]'>
+        <header className='px-9 bg-gradient-to-l from-[#1f103d] to-[#e6007e]'>
             <nav className='flex justify-between items-center'>
                 <div>
                     <figure>
                         <Link to={"/"}>
-                            <img className="h-28" src={Logo} alt="" />
+                            <img className="h-30" src={Logo} alt="" />
                         </Link>
 
                     </figure>

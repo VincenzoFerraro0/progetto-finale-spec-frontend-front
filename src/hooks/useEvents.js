@@ -1,16 +1,74 @@
-import { useEffect, useState } from "react";
-// Importo la variabile salvata nel file .env
-const {VITE_API_URL} = import.meta.env
+import { useState, useEffect } from "react";
 
-export default function useEvents(){
+// Recupera l'URL dell'API dalle variabili d'ambiente
+const { VITE_API_URL } = import.meta.env
 
-    const [events, setEvents] = useState([])
+/**
+ * Hook personalizzato per gestire gli eventi
+ * Fornisce funzionalità per recuperare tutti gli eventi e singoli eventi
+ */
+export default function useEvents() {
 
-    useEffect(()=>{
-        fetch(`${VITE_API_URL}/events`)
-            .then(res => res.json())
-            .then(data => setEvents(data))
-            .catch(error => console.error(error))
-    }, [])
-    return{events}
+    // State per memorizzare la lista di tutti gli eventi
+    const [events, setEvents] = useState([]);
+    // State per memorizzare un singolo evento selezionato
+    const [singleEvent, setSingleEvent] = useState(null);
+
+    // Effect che viene eseguito al mount del componente per caricare tutti gli eventi
+    useEffect(() => {
+        /**
+         * Funzione asincrona per recuperare tutti gli eventi dall'API
+         */
+        const fetchEvents = async () => {
+            try {
+                // Chiamata API per recuperare tutti gli eventi
+                const res = await fetch(`${VITE_API_URL}/events`)
+                const data = await res.json()
+                // Aggiorna lo state con i dati ricevuti
+                setEvents(data)
+            } catch (error) {
+                // Gestione degli errori con controllo del tipo
+                if (error instanceof Error) {
+                    console.error(error.message);
+                } else {
+                    console.error("Errore sconosciuto", error);
+                }
+            }
+        };
+        // Esegue la funzione di fetch
+        fetchEvents()
+    }, []) // Array di dipendenze vuoto = esegue solo al mount
+
+    
+    /**
+        Funzione per recuperare un singolo evento tramite ID
+     */
+    const fetchSingleEvent = async (id) => {
+        try {
+            // Chiamata API per recuperare un evento specifico
+            const response = await fetch(`${VITE_API_URL}/events/${id}`);
+            
+            // Controlla se la risposta è valida
+            if (!response.ok) {
+                throw new Error(`Errore HTTP: ${response.status}`);
+            }
+           
+            // Converte la risposta in JSON
+            const data = await response.json();
+            // Aggiorna lo state con l'evento recuperato
+            setSingleEvent(data);
+        } catch (err) {
+            // Log dell'errore e reset dello state in caso di fallimento
+            console.error("Errore nel recupero dell'evento:", err);
+            setSingleEvent(null); 
+        }
+    };
+
+    // Ritorna gli stati e le funzioni per essere utilizzati nei componenti
+    return {
+        events,              // Lista di tutti gli eventi
+        singleEvent,         // Singolo evento selezionato
+        fetchSingleEvent,    // Funzione per recuperare un singolo evento
+        singleEvent          // Duplicato - probabilmente da rimuovere
+    };
 }
