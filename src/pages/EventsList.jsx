@@ -22,9 +22,10 @@ export default function EventsList() {
     }
 
     return (
-        <div className="min-h-screen bg-black text-white p-6">
+        <>
+            
             {/* Container centrato con larghezza massima */}
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-4xl mx-auto text-white">
                 {/* Titolo della pagina */}
                 <h1 className="text-4xl font-bold mb-12 text-center tracking-wider uppercase">
                     prossimi eventi
@@ -81,6 +82,6 @@ export default function EventsList() {
                     )}
                 </div>
             </div>
-        </div>
+        </>
     )
 }

@@ -12,7 +12,7 @@ import EventCard from "../components/EventCard"
 export default function EventDetails() {
     // Estrae l'ID dell'evento dalla URL tramite React Router
     const { id } = useParams()
-    
+
     // Hook personalizzato per la gestione degli eventi
     const { fetchSingleEvent, singleEvent } = useEvents()
 
@@ -23,7 +23,7 @@ export default function EventDetails() {
             fetchSingleEvent(id); // Chiama la funzione per recuperare l'evento
         }
     }, [id]); // Dipendenza: si riesegue quando l'ID cambia
-    
+
     // Estrae l'oggetto evento dalla risposta del hook
     const event = singleEvent?.event;
 
@@ -40,25 +40,23 @@ export default function EventDetails() {
 
     // Render principale del componente
     return (
-        <div className="min-h-screen bg-black text-white p-6">
-            <div className="max-w-4xl mx-auto">
-                {/* Header con pulsante di navigazione per tornare alla lista eventi */}
-                <div className="mb-8">
-                    <Link 
-                        to="/" 
-                        className="inline-flex items-center text-gray-400 hover:text-white transition-colors duration-300 mb-6"
-                    >
-                        {/* Icona freccia sinistra */}
-                        <span className="text-xl mr-2">←</span>
-                        {/* Testo del link con stile mono */}
-                        <span className="uppercase tracking-wide text-sm font-mono">torna agli eventi</span>
-                    </Link>
-                </div>
+        <div className="max-w-4xl mx-auto">
+            {/* Header con pulsante di navigazione per tornare alla lista eventi */}
+            <div className="mb-8">
+                <Link
+                    to="/"
+                    className="inline-flex items-center text-gray-400 hover:text-white transition-colors duration-300 mb-6"
+                >
+                    {/* Icona freccia sinistra */}
+                    <span className="text-xl mr-2">←</span>
+                    {/* Testo del link con stile mono */}
+                    <span className="uppercase tracking-wide text-sm font-mono">torna agli eventi</span>
+                </Link>
+            </div>
 
-                {/* Contenuto principale: mostra la card con i dettagli dell'evento */}
-                <div className="">
-                   <EventCard event={event}/>
-                </div>
+            {/* Contenuto principale: mostra la card con i dettagli dell'evento */}
+            <div>
+                <EventCard event={event} />
             </div>
         </div>
     )

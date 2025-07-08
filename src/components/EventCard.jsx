@@ -9,9 +9,7 @@ import GradientBar from "./GradientBar";
  */
 export default function EventCard({ event }) {
     return (
-        // Layout responsive: singola colonna su mobile, due colonne su desktop
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            
+        <div className="text-white">
             {/* Sezione immagine dell'evento */}
             <div className="relative">
                 <figure className="relative overflow-hidden border border-gray-800">
@@ -19,7 +17,7 @@ export default function EventCard({ event }) {
                     <img
                         src={event.coverImage}
                         alt={event.title}
-                        className="w-full h-96 lg:h-full "
+                        className="w-full"
                     />
                 </figure>
                 
