@@ -4,20 +4,19 @@ import GradientBar from "./GradientBar";
 /**
  * Componente per visualizzare i dettagli completi di un evento
  * Mostra immagine, informazioni principali, dettagli e pulsante per l'acquisto biglietti
- * 
- * @param {Object} event - Oggetto contenente tutti i dati dell'evento
+ * * @param {Object} event - Oggetto contenente tutti i dati dell'evento
  */
 export default function EventCard({ event }) {
     return (
         <div className="text-white">
             {/* Sezione immagine dell'evento */}
-            <div className="relative">
-                <figure className="relative overflow-hidden border border-gray-800">
+            <div>
+                <figure className="w-full h-96 overflow-hidden"> {/* Aggiunto w-full, h-96 e overflow-hidden */}
                     {/* Immagine di copertina con overlay gradient */}
                     <img
                         src={event.coverImage}
                         alt={event.title}
-                        className="w-full"
+                        className="w-full h-full object-cover" // Aggiunto w-full, h-full e object-cover
                     />
                 </figure>
                 

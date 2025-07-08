@@ -69,6 +69,5 @@ export default function useEvents() {
         events,              // Lista di tutti gli eventi
         singleEvent,         // Singolo evento selezionato
         fetchSingleEvent,    // Funzione per recuperare un singolo evento
-        singleEvent          // Duplicato - probabilmente da rimuovere
     };
 }
