@@ -14,6 +14,8 @@ export default function useEvents() {
     // State per memorizzare un singolo evento selezionato
     const [singleEvent, setSingleEvent] = useState(null);
 
+    const [isLoading, setIsLoading] = useState(true);
+
     // Effect che viene eseguito al mount del componente per caricare tutti gli eventi
     useEffect(() => {
         /**
@@ -33,6 +35,9 @@ export default function useEvents() {
                 } else {
                     console.error("Errore sconosciuto", error);
                 }
+            }finally {
+                // Imposta isLoading a false dopo il fetch
+                setIsLoading(false);
             }
         };
         // Esegue la funzione di fetch
@@ -69,5 +74,6 @@ export default function useEvents() {
         events,              // Lista di tutti gli eventi
         singleEvent,         // Singolo evento selezionato
         fetchSingleEvent,    // Funzione per recuperare un singolo evento
+        isLoading
     };
 }

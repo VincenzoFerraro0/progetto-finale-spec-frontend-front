@@ -1,19 +1,16 @@
-// Import dei moduli React Router necessari
-import { Link, useNavigate } from "react-router-dom"
-
 // Import del contesto globale per accedere agli eventi filtrati e ordinati
 import { useGlobalContext } from "../context/GlobalContext"
 
 // Import dei componenti personalizzati
 import ToolBar from "../components/ToolBar"
-import GradientBar from "../components/GradientBar"
-import BtnWishList from "../components/BtnWishList"
 import EventCard from "../components/EventCard"
+import useEvents from "../hooks/useEvents"
 
 // Componente principale che mostra la lista degli eventi
 export default function EventsList() {
     // Recupera la lista di eventi filtrati e ordinati dal contesto globale
     const { filteredAndSortedEvents } = useGlobalContext()
+    const { isLoading } = useEvents()
 
     return (
         <>
@@ -30,9 +27,10 @@ export default function EventsList() {
 
                 {/* Griglia per la visualizzazione degli eventi */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {/* Messaggio di caricamento se non ci sono eventi */}
-                    {filteredAndSortedEvents.length === 0 ? (
-                        <p>Caricamento degli eventi in corso</p>
+                    {isLoading ? (
+                        <p className="text-center text-gray-400">Caricamento in corso...</p>
+                    ) : filteredAndSortedEvents.length === 0 ? (
+                        <p className="text-center text-gray-400">nessun risultato trovato</p>
                     ) : (
                         // Mappa degli eventi da visualizzare
                         filteredAndSortedEvents.map((event) => {
