@@ -2,8 +2,7 @@ import { useParams, Link } from "react-router-dom"
 import { useEffect } from "react"
 
 import useEvents from "../hooks/useEvents"
-import GradientBar from "../components/GradientBar"
-import EventCard from "../components/EventCard"
+import EventCardDetails from "../components/EventCardDetails"
 
 /**
  * Componente per visualizzare i dettagli di un singolo evento
@@ -56,7 +55,7 @@ export default function EventDetails() {
 
             {/* Contenuto principale: mostra la card con i dettagli dell'evento */}
             <div>
-                <EventCard event={event} />
+                <EventCardDetails event={event} />
             </div>
         </div>
     )

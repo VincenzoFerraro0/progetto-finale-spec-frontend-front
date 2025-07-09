@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"; // Importa gli hook useState per la gestione dello stato e useEffect per effetti collaterali
 import { useGlobalContext } from "../context/GlobalContext"; // Importa il contesto globale per accedere a dati globali, come la lista di tutti gli eventi
 import useEvents from "../hooks/useEvents"; // Importa il custom hook useEvents per il fetching dei dettagli di un singolo evento
-import EventCard from "../components/EventCard"; // Importa il componente EventCard per visualizzare i dettagli di un evento
+import EventCardDetails from "../components/EventCardDetails"; // Importa il componente EventCardDetails per visualizzare i dettagli di un evento
 import { Link } from "react-router-dom"; // Importa Link per la navigazione tra le pagine
 
 // Componente principale della pagina del comparatore
@@ -129,7 +129,7 @@ export default function ComparatorPage() {
                     </div>
                 ) : ( // Se un ID è stato selezionato
                     firstEventHook.singleEvent?.event && ( // Renderizza EventCard SOLO SE i dati dell'evento sono arrivati e non sono nulli
-                        <EventCard event={firstEventHook.singleEvent.event} />
+                        <EventCardDetails event={firstEventHook.singleEvent.event} />
                     )
                     // Se firstId è selezionato ma firstEventHook.singleEvent?.event è null (es. in fase di caricamento, o errore, o ID non valido),
                     // questo blocco non renderizzerà nulla, lasciando lo spazio vuoto.
@@ -141,8 +141,8 @@ export default function ComparatorPage() {
                         Seleziona il secondo evento per confrontarlo.
                     </div>
                 ) : ( // Se un ID è stato selezionato
-                    secondEventHook.singleEvent?.event && ( // Renderizza EventCard SOLO SE i dati dell'evento sono arrivati e non sono nulli
-                        <EventCard event={secondEventHook.singleEvent.event} />
+                    secondEventHook.singleEvent?.event && ( // Renderizza EventCardDetails SOLO SE i dati dell'evento sono arrivati e non sono nulli
+                        <EventCardDetails event={secondEventHook.singleEvent.event} />
                     )
                     // Comportamento simile al primo pannello per i casi di caricamento/errore/dati mancanti.
                 )}

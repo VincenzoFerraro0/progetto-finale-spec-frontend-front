@@ -7,7 +7,7 @@ import BtnWishList from "./BtnWishList";
  * Mostra immagine, informazioni principali, dettagli e pulsante per l'acquisto biglietti
  * * @param {Object} event - Oggetto contenente tutti i dati dell'evento
  */
-export default function EventCard({ event }) {
+export default function EventCardDetails({ event }) {
     return (
         <div className="text-white">
             {/* Sezione immagine dell'evento */}

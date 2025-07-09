@@ -23,7 +23,7 @@ export default function BtnWishList({ event }) {
                     addWishList(event);
                 }
             }}
-            className="absolute right-5 top-2.5 cursor-pointer" // Pulsante posizionato in alto a destra
+            className="absolute right-3.5 top-2.5 cursor-pointer" // Pulsante posizionato in alto a destra
             title={isInWishList(event) ? "Rimuovi dai preferiti" : "Aggiungi ai preferiti"}
         >
             <FontAwesomeIcon
