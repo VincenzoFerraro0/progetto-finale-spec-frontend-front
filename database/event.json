@@ -1,0 +1,245 @@
+[
+  {
+    "id": 1,
+    "title": "Awakenings Summer Festival 2025",
+    "category": "Techno",
+    "date": "2025-07-11T12:22:00",
+    "location": "Olanda, Paaspop Eventside",
+    "artists": [
+      "Amelie Lens",
+      "Richie Hawtin",
+      "Adam Beyer",
+      "Nina Kraviz",
+      "Reinier Zonneveld"
+    ],
+    "ticketLink": "https://www.awakenings.com/en/events/2025/07/awakenings-festival-2025/337839/",
+    "coverImage": "https://www.thedjrevolution.com/wp-content/uploads/elementor/thumbs/Photo-from-Awakenings-summer-festival-q1ledmx1o6x0qyiufn5fn5iiag2etk5uw3kz8s6n32.jpg",
+    "isAfterparty": false,
+    "ageRestriction": 18,
+    "description": "Il più grande festival techno all'aperto nei Paesi Bassi, con più palchi e una lineup stellare di artisti techno internazionali.",
+    "tags": [
+      "festival",
+      "open air",
+      "techno"
+    ],
+    "createdAt": "2025-07-02T18:55:30.025Z",
+    "updatedAt": "2025-07-04T15:11:56.567Z"
+  },
+  {
+    "id": 2,
+    "title": "Tomorrowland 2025 - Weekend 1",
+    "category": "Rave",
+    "date": "2025-07-18T12:22:00",
+    "location": "Belgio, De Schorre",
+    "artists": [
+      "David Guetta",
+      "Armin van Buuren",
+      "Dimitri Vegas & Like Mike",
+      "Charlotte de Witte"
+    ],
+    "ticketLink": "https://www.event-tickets.be/Event/e9M1ySrXCELpfLvZ36gxVDS9JT9SZAgcJMTu3AuT/en",
+    "coverImage": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/9c/52/98/caption.jpg?w=1400&h=-1&s=1",
+    "isAfterparty": false,
+    "ageRestriction": 18,
+    "description": "Uno dei festival di musica elettronica più rinomati al mondo, famoso per i suoi palchi elaborati e la lineup variegata.",
+    "tags": [
+      "festival",
+      "EDM",
+      "fantasy"
+    ],
+    "createdAt": "2025-07-02T18:55:48.799Z",
+    "updatedAt": "2025-07-02T18:55:48.799Z"
+  },
+  {
+    "id": 3,
+    "title": "Printworks London Reopening Party",
+    "category": "Industrial",
+    "date": "2025-09-05T20:22:00",
+    "location": "London, Printworks",
+    "artists": [
+      "Dax J",
+      "Helena Hauff",
+      "Blawan"
+    ],
+    "ticketLink": "https://www.printworkslondon.co.uk/",
+    "coverImage": "https://printworkslondon.co.uk/wp-content/uploads/2019/07/Chase-and-Status-RTRN-II-JUNGLE-Printworks-3rd-November-2018-by-Luke-Dyson-IMG_1187-2-2048x1200.jpg",
+    "isSoldOut": false,
+    "ageRestriction": 18,
+    "description": "La tanto attesa riapertura dell’iconico locale londinese Printworks, con una serata di techno industriale intensa.",
+    "tags": [
+      "reopening",
+      "industrial",
+      "london"
+    ],
+    "createdAt": "2025-07-02T18:56:53.031Z",
+    "updatedAt": "2025-07-02T18:56:53.031Z"
+  },
+  {
+    "id": 4,
+    "title": "berghain Klubnacht",
+    "category": "Techno",
+    "date": "2025-07-26T23:22:00",
+    "location": "Berlin, Berghain/Panorama Bar",
+    "artists": [
+      "Ben Klock",
+      "Marcel Dettmann",
+      "Avalon Emerson"
+    ],
+    "ticketLink": "https://www.berghain.berlin/en/event/79222/",
+    "coverImage": "https://clubbingtv.com/wp-content/uploads/2016/02/rsz_arena_club_berlin-1200x630-1.jpg",
+    "isAfterparty": false,
+    "ageRestriction": 18,
+    "description": "Una leggendaria maratona techno di fine settimana in uno dei club più famosi al mondo. La lineup viene solitamente annunciata poco prima dell’evento.",
+    "tags": [
+      "techno",
+      "clubbing",
+      "berlin"
+    ],
+    "createdAt": "2025-07-02T18:57:13.201Z",
+    "updatedAt": "2025-07-02T18:57:13.201Z"
+  },
+  {
+    "id": 5,
+    "title": "Monegros Desert Festival 2025",
+    "category": "Rave",
+    "date": "2025-07-29T16:22:00",
+    "location": "Fraga, Monegros Desert",
+    "artists": [
+      "Boris Brejcha",
+      "Paul Kalkbrenner",
+      "Wu-Tang Clan"
+    ],
+    "ticketLink": "https://monegrosfestival.com/it/tickets",
+    "coverImage": "https://assets.monegrosfestival.com/2025/artists/full-lineup-2025-desktop.jpg",
+    "isAfterparty": false,
+    "ageRestriction": 18,
+    "description": "Un festival senza pari di 24 ore no-stop di musica elettronica e hip-hop ambientato nello scenario unico del deserto di Monegros.",
+    "tags": [
+      "festival",
+      "desert",
+      "24-hour"
+    ],
+    "createdAt": "2025-07-02T18:57:25.966Z",
+    "updatedAt": "2025-07-02T18:57:25.966Z"
+  },
+  {
+    "id": 6,
+    "title": "Sónar Barcelona 2025",
+    "category": "Techno",
+    "date": "2025-06-19T14:00:00",
+    "location": "Barcelona, Fira Montjuïc / Fira Gran Via L'Hospitalet",
+    "artists": [
+      "Floating Points",
+      "The Blessed Madonna",
+      "Laurent Garnier"
+    ],
+    "ticketLink": "https://sonar.es/en/",
+    "coverImage": "https://storage.googleapis.com/pro-cms-bucket/Sonar_Pub_Polo_Pan_Martini_Ariel_20250614_9346_2_ce936274d9/Sonar_Pub_Polo_Pan_Martini_Ariel_20250614_9346_2_ce936274d9.jpg",
+    "isAfterparty": false,
+    "ageRestriction": 18,
+    "description": "Un festival internazionale di Musica Avanzata e Congresso di Tecnologia e Creatività.",
+    "tags": [
+      "festival",
+      "art",
+      "technology"
+    ],
+    "createdAt": "2025-07-02T18:57:36.078Z",
+    "updatedAt": "2025-07-02T18:57:36.078Z"
+  },
+  {
+    "id": 7,
+    "title": "Reunion Festival 2025",
+    "category": "Hard Techno",
+    "date": "2025-08-16T20:00:00",
+    "location": "Leipzig, Felsenkeller",
+    "artists": [
+      "Kobosil",
+      "I Hate Models",
+      "SPFDJ"
+    ],
+    "ticketLink": "https://www.eventbrite.com.au/e/reunion-festival-2026-tickets-1364989804249?aff=erelexpmlt",
+    "coverImage": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1055496263%2F343477665245%2F1%2Foriginal.20250618-061837?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C60%2C1920%2C960&s=31eb8d3ff5634ca7457f2c883be52f57",
+    "isAfterparty": false,
+    "ageRestriction": 18,
+    "description": "Un festival dedicato ai suoni techno duri e veloci, ospitato nel Felsenkeller di Lipsia.",
+    "tags": [
+      "festival",
+      "indoor",
+      "hard techno"
+    ],
+    "createdAt": "2025-07-02T18:57:52.490Z",
+    "updatedAt": "2025-07-02T18:57:52.490Z"
+  },
+  {
+    "id": 8,
+    "title": "DGTL Amsterdam 2025",
+    "category": "Techno",
+    "date": "2025-10-23T12:00:00",
+    "location": "Amsterdam, NDSM Docklands",
+    "artists": [
+      "Mochakk",
+      "Folamour",
+      "Honey Dijon"
+    ],
+    "ticketLink": "https://shop.dgtl-festival.com/en/dgtl-ade-2025-confidence-man/dgtl-ade-2025-confidence-man-tickets",
+    "coverImage": "https://imgs.search.brave.com/q3BO1ZDjjTQXuQlLc8fJDFEQacSG-y01OTxUNBZa2pw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/eW91dHViZS5jb20v/dmkvSU9iTjdCVUox/QTQvbWF4cmVzZGVm/YXVsdC5qcGc",
+    "isAfterparty": false,
+    "ageRestriction": 18,
+    "description": "Un festival di musica elettronica di punta, noto per l’attenzione alla sostenibilità, l’arte e la musica elettronica all’avanguardia.",
+    "tags": [
+      "festival",
+      "sustainability",
+      "art"
+    ],
+    "createdAt": "2025-07-02T18:58:09.804Z",
+    "updatedAt": "2025-07-02T18:58:09.804Z"
+  },
+  {
+    "id": 9,
+    "title": "Nuits Sonores 2025",
+    "category": "Industrial",
+    "date": "2025-05-21T18:00:00",
+    "location": "Lyon, Various Venues",
+    "artists": [
+      "Modeselektor",
+      "Jeff Mills",
+      "Helena Hauff"
+    ],
+    "ticketLink": "https://www.nuits-sonores.com/",
+    "coverImage": "https://mesinfos.fr/content/articles/449/A223449/big-nuits-sonores-billets.webp?v=1748452503",
+    "isAfterparty": false,
+    "ageRestriction": 18,
+    "description": "Un festival indipendente di musica elettronica che si tiene ogni anno a Lione, in Francia, in diverse location.",
+    "tags": [
+      "festival",
+      "urban",
+      "multi-venue"
+    ],
+    "createdAt": "2025-07-02T18:58:22.987Z",
+    "updatedAt": "2025-07-02T18:58:22.987Z"
+  },
+  {
+    "id": 10,
+    "title": "Outlook Origins 2025",
+    "category": "Rave",
+    "date": "2025-07-24T14:00:00",
+    "location": "Tisno, The Garden Resort",
+    "artists": [
+      "Shy FX",
+      "Goldie",
+      "Hazard"
+    ],
+    "ticketLink": "https://outlookorigins.com/",
+    "coverImage": "https://images.squarespace-cdn.com/content/v1/587cc408a5790ab82ba3563c/1727176072539-K9HQ5JZIV5ZU4P4I9WRL/OO24+OUTLOOK+-+IPC+boat+party+-+YUSHY-19.jpg?format=1500w",
+    "isAfterparty": false,
+    "ageRestriction": 18,
+    "description": "Un festival di bass music ambientato nel bellissimo Garden Resort di Tisno, in Croazia, focalizzato su drum & bass, dubstep e grime.",
+    "tags": [
+      "festival",
+      "beach",
+      "bass music"
+    ],
+    "createdAt": "2025-07-02T18:58:33.041Z",
+    "updatedAt": "2025-07-02T18:58:33.041Z"
+  }
+]
