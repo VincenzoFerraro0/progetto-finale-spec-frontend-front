@@ -2,6 +2,7 @@ import { createContext, useContext, useCallback, useMemo, useState, use } from "
 
 import useEvents from "../hooks/useEvents";
 import { useNavigate } from "react-router-dom";
+import useStorage from "../hooks/useStorage";
 
 // Crea il contesto globale per condividere lo stato tra componenti
 const GlobalContext = createContext();
@@ -44,7 +45,9 @@ export function GlobalProvider({ children }) {
     const [sortField, setSortField] = useState("title");
     // State per la direzione di ordinamento ("asc" o "desc")
     const [sortOrder, setSortOrder] = useState("asc");
-    const [wishList, setWishList] = useState([]);
+    
+    // State per la wishList persistente su localStorage
+    const [wishList, setWishList] = useStorage("wishList", [])
 
     // Funzione di ricerca con debounce per evitare troppe chiamate durante la digitazione
     // Ritarda l'esecuzione di 500ms dopo l'ultimo carattere digitato
@@ -80,13 +83,13 @@ export function GlobalProvider({ children }) {
     const addWishList = (event) => {
         // Aggiunge un evento alla wish list se non è già presente
         if (!wishList.some((item) => item.id === event.id)) {
-            setWishList((prev) => [...prev, event]);
+            setWishList([...wishList, event]);
         }
     };
 
     const removeWishList = (event) => {
         // Rimuove un evento dalla wish list
-        setWishList((prev) => prev.filter((item) => item.id !== event.id));
+        setWishList(wishList.filter((item) => item.id !== event.id));
     };
 
     const isInWishList = useCallback((event) => {
