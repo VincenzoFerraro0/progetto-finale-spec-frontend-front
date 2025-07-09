@@ -1,4 +1,4 @@
-import { createContext, useContext, useCallback, useMemo, useState } from "react";
+import { createContext, useContext, useCallback, useMemo, useState, use } from "react";
 
 import useEvents from "../hooks/useEvents";
 
@@ -15,9 +15,9 @@ const GlobalContext = createContext();
 function debounce(callback, delay) {
     let timer;
     return (value) => {
-        clearInterval(timer); 
+        clearInterval(timer);
         timer = setTimeout(() => {
-            callback(value); 
+            callback(value);
         }, delay);
     };
 }
@@ -28,27 +28,27 @@ function debounce(callback, delay) {
  * @param {Object} props - Le props del componente
  * @param {React.ReactNode} props.children - I componenti figli
  */
-export function GlobalProvider ({ children }) {
+export function GlobalProvider({ children }) {
 
     // Recupera tutti gli eventi tramite hook personalizzato
     const { events } = useEvents();
 
+    //! STATI
     // State per la query di ricerca
     const [searchQuery, setSearchQuery] = useState("");
-
     // State per la categoria selezionata nel filtro
     const [selectedCategory, setSelectedCategory] = useState("");
-
     // State per il campo di ordinamento (es: "title", "date", ecc.)
     const [sortField, setSortField] = useState("title");
-
     // State per la direzione di ordinamento ("asc" o "desc")
     const [sortOrder, setSortOrder] = useState("asc");
+    const [wishList, setWishList] = useState([]);
 
     // Funzione di ricerca con debounce per evitare troppe chiamate durante la digitazione
     // Ritarda l'esecuzione di 500ms dopo l'ultimo carattere digitato
     const debaunceSearch = useCallback(debounce(setSearchQuery, 500), []);
 
+    
     // Memo per calcolare eventi filtrati e ordinati
     // Si ricalcola solo quando cambiano le dipendenze
     const filteredAndSortedEvents = useMemo(() => {
@@ -73,6 +73,25 @@ export function GlobalProvider ({ children }) {
             });
     }, [searchQuery, selectedCategory, events, sortField, sortOrder]); // Dipendenze per la ricalcolazione
 
+
+    // Funzioni per gestire la wish list degli eventi
+    const addWishList = (event) => {
+        // Aggiunge un evento alla wish list se non è già presente
+        if (!wishList.some((item) => item.id === event.id)) {
+            setWishList((prev) => [...prev, event]);
+        }
+    };
+
+    const removeWishList = (event) => {
+        // Rimuove un evento dalla wish list
+        setWishList((prev) => prev.filter((item) => item.id !== event.id));
+    };
+
+    const isInWishList = useCallback((event) => {
+        // Controlla se un evento è già presente nella wish list
+        return wishList.some((item) => item.id === event.id);
+    }, [wishList]); // Dipendenza per evitare ricomputazioni inutili
+
     // Oggetto valore che contiene tutto lo stato e le funzioni da condividere
     const value = {
         events,                    // Lista originale degli eventi
@@ -84,6 +103,10 @@ export function GlobalProvider ({ children }) {
         setSortOrder,            // Setter per la direzione di ordinamento
         sortField,               // Campo di ordinamento attuale
         sortOrder,               // Direzione di ordinamento attuale
+        wishList,                // Lista degli eventi nella wish list
+        addWishList,             // Funzione per aggiungere un evento alla wish list
+        removeWishList,          // Funzione per rimuovere un evento dalla wish list
+        isInWishList,            // Funzione per verificare se un evento è nella wish
     };
 
     // Restituisce il provider con il valore del contesto
@@ -100,7 +123,7 @@ export function GlobalProvider ({ children }) {
  */
 export function useGlobalContext() {
     const context = useContext(GlobalContext);
-    
+
     // Controllo di sicurezza: verifica che l'hook sia utilizzato all'interno del provider
     if (context === undefined) {
         throw new Error(

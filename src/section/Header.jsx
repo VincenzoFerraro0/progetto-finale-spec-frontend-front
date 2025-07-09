@@ -9,7 +9,7 @@ export default function Header() {
     const navItems = [
         { to: "/", text: "eventi" },
         { to: "/comparator", text: "comparatore" },
-        { to: "/favorites", text: "preferiti" },
+        { to: "/wishlist", text: "preferiti" },
     ]
 
     return (

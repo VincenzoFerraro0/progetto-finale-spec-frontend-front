@@ -7,6 +7,7 @@ import { useGlobalContext } from "../context/GlobalContext"
 // Import dei componenti personalizzati
 import ToolBar from "../components/ToolBar"
 import GradientBar from "../components/GradientBar"
+import BtnWishList from "../components/BtnWishList"
 
 // Componente principale che mostra la lista degli eventi
 export default function EventsList() {
@@ -18,7 +19,7 @@ export default function EventsList() {
 
     // Funzione chiamata quando si clicca su "dettagli"
     const handleEventClick = (eventId) => {
-        navigate(`/events/${eventId}`)  // Naviga verso la pagina dettagliata dell'evento
+        navigate()  // Naviga verso la pagina dettagliata dell'evento
     }
 
     return (
@@ -44,15 +45,13 @@ export default function EventsList() {
                         filteredAndSortedEvents.map((event) => {
                             return (
                                 // Ogni evento è un link cliccabile alla sua pagina dettagliata
-                                <Link
-                                    key={event.id}
-                                    to={`/events/${event.id}`}
-                                    className="cursor-default"
-                                >
-                                    <div className="border border-gray-800 bg-gray-900/50 p-6 hover:border-gray-600 transition-all duration-300 hover:bg-gray-900/80 h-full flex flex-col justify-between">
+
+                                    <div key={event.id} className="border border-gray-800 bg-gray-900/50 p-6 hover:border-gray-600 transition-all duration-300 hover:bg-gray-900/80 h-full flex flex-col justify-between relative">
+                                        {/* Bottone wishlist in alto a destra */}
+                                        <BtnWishList event={event} />
                                         
                                         {/* Titolo dell’evento */}
-                                        <h3 className="text-lg lg:text-xl font-semibold mb-2 text-white uppercase tracking-wide">
+                                        <h3 className="text-lg lg:text-xl font-semibold mb-2 mt-3 text-white uppercase tracking-wide">
                                             {event.title}
                                         </h3>
 
@@ -65,7 +64,7 @@ export default function EventsList() {
                                         <GradientBar />
 
                                         {/* Bottone per visualizzare i dettagli */}
-                                        <div className="self-center mt-4">
+                                        <Link to={`/events/${event.id}`} className="self-center mt-4">
                                             <button
                                                 onClick={() => handleEventClick(event.id)}
                                                 className="bg-white text-black hover:bg-[#008cff] hover:text-white font-bold py-2 px-4 
@@ -74,9 +73,9 @@ export default function EventsList() {
                                             >
                                                 dettagli
                                             </button>
-                                        </div>
+                                        </Link>
                                     </div>
-                                </Link>
+                                
                             )
                         })
                     )}

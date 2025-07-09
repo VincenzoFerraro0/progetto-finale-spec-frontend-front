@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import GradientBar from "./GradientBar";
+import BtnWishList from "./BtnWishList";
 
 /**
  * Componente per visualizzare i dettagli completi di un evento
@@ -10,7 +11,8 @@ export default function EventCard({ event }) {
     return (
         <div className="text-white">
             {/* Sezione immagine dell'evento */}
-            <div>
+            <div className="relative mb-8">
+                <BtnWishList event={event} /> {/* Pulsante per aggiungere ai preferiti */}
                 <figure className="w-full h-96 overflow-hidden"> {/* Aggiunto w-full, h-96 e overflow-hidden */}
                     {/* Immagine di copertina con overlay gradient */}
                     <img
