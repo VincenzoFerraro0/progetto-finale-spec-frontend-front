@@ -129,7 +129,7 @@ export default function ComparatorPage() {
                     </div>
                 ) : ( // Se un ID è stato selezionato
                     firstEventHook.singleEvent?.event && ( // Renderizza EventCard SOLO SE i dati dell'evento sono arrivati e non sono nulli
-                        <EventCardDetails obj={firstEventHook.singleEvent.event} />
+                        <EventCardDetails event={firstEventHook.singleEvent.event} />
                     )
                     // Se firstId è selezionato ma firstEventHook.singleEvent?.event è null (es. in fase di caricamento, o errore, o ID non valido),
                     // questo blocco non renderizzerà nulla, lasciando lo spazio vuoto.
@@ -142,7 +142,7 @@ export default function ComparatorPage() {
                     </div>
                 ) : ( // Se un ID è stato selezionato
                     secondEventHook.singleEvent?.event && ( // Renderizza EventCardDetails SOLO SE i dati dell'evento sono arrivati e non sono nulli
-                        <EventCardDetails obj={secondEventHook.singleEvent.event} />
+                        <EventCardDetails event={secondEventHook.singleEvent.event} />
                     )
                     // Comportamento simile al primo pannello per i casi di caricamento/errore/dati mancanti.
                 )}

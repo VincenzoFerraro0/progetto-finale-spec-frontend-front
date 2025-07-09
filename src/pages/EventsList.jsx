@@ -38,7 +38,7 @@ export default function EventsList() {
                         filteredAndSortedEvents.map((event) => {
                             return (
                                 // Ogni evento è un link cliccabile alla sua pagina dettagliata
-                                <EventCard key={event.id} obj={event} />
+                                <EventCard key={event.id} event={event} />
                             )
                         })
                     )}

@@ -1,6 +1,7 @@
 import { createContext, useContext, useCallback, useMemo, useState, use } from "react";
 
 import useEvents from "../hooks/useEvents";
+import { useNavigate } from "react-router-dom";
 
 // Crea il contesto globale per condividere lo stato tra componenti
 const GlobalContext = createContext();
@@ -30,6 +31,7 @@ function debounce(callback, delay) {
  */
 export function GlobalProvider({ children }) {
 
+    const navigate = useNavigate()
     // Recupera tutti gli eventi tramite hook personalizzato
     const { events } = useEvents();
 
@@ -48,7 +50,7 @@ export function GlobalProvider({ children }) {
     // Ritarda l'esecuzione di 500ms dopo l'ultimo carattere digitato
     const debaunceSearch = useCallback(debounce(setSearchQuery, 500), []);
 
-    
+
     // Memo per calcolare eventi filtrati e ordinati
     // Si ricalcola solo quando cambiano le dipendenze
     const filteredAndSortedEvents = useMemo(() => {
@@ -92,6 +94,12 @@ export function GlobalProvider({ children }) {
         return wishList.some((item) => item.id === event.id);
     }, [wishList]); // Dipendenza per evitare ricomputazioni inutili
 
+    const clearWishList = () => {
+        setWishList([])
+        navigate('/')
+
+    }
+
     // Oggetto valore che contiene tutto lo stato e le funzioni da condividere
     const value = {
         events,                    // Lista originale degli eventi
@@ -107,6 +115,7 @@ export function GlobalProvider({ children }) {
         addWishList,             // Funzione per aggiungere un evento alla wish list
         removeWishList,          // Funzione per rimuovere un evento dalla wish list
         isInWishList,            // Funzione per verificare se un evento è nella wish
+        clearWishList
     };
 
     // Restituisce il provider con il valore del contesto
