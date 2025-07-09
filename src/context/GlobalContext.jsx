@@ -79,24 +79,26 @@ export function GlobalProvider({ children }) {
     }, [searchQuery, selectedCategory, events, sortField, sortOrder]); // Dipendenze per la ricalcolazione
 
 
-    // Funzioni per gestire la wish list degli eventi
+    //! Funzioni per gestire la wish list degli eventi
+    // Aggiunge un evento alla wish list se non è già presente
     const addWishList = (event) => {
-        // Aggiunge un evento alla wish list se non è già presente
         if (!wishList.some((item) => item.id === event.id)) {
             setWishList([...wishList, event]);
         }
     };
 
+    // Rimuove un evento dalla wish list
     const removeWishList = (event) => {
-        // Rimuove un evento dalla wish list
         setWishList(wishList.filter((item) => item.id !== event.id));
     };
 
+    // Controlla se un evento è già presente nella wish list
     const isInWishList = useCallback((event) => {
-        // Controlla se un evento è già presente nella wish list
         return wishList.some((item) => item.id === event.id);
     }, [wishList]); // Dipendenza per evitare ricomputazioni inutili
 
+
+    // Svuota la wishList e rimanda alla home
     const clearWishList = () => {
         setWishList([])
         navigate('/')
