@@ -1,3 +1,4 @@
+import EventCard from "../components/EventCard"
 import { useGlobalContext } from "../context/GlobalContext"
 
 export default function WishlistPage() {
@@ -13,9 +14,9 @@ export default function WishlistPage() {
                         <p>non hai aggiunto nessun evento alla lista dei preferiti</p>
                     ) : (
                          wishList&&
-                        wishList.map((e)=>{
+                        wishList.map((event)=>{
                             return(
-                                <p>{e.title}</p>
+                                <EventCard obj={event}/>
                             )
                         })
                     )
