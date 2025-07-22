@@ -9,7 +9,6 @@
 - **JavaScript (ES6+)** – Linguaggio di programmazione principale.
 - **Tailwind CSS** – Framework utility-first per la stilizzazione rapida e responsive.
 - **React Router** – Gestione delle rotte e navigazione tra le pagine.
-- **Axios** – Client HTTP per la comunicazione con il backend.
 - **localStorage** – Persistenza dei dati lato client (preferiti).
 - **Git & GitHub** – Controllo versione e collaborazione.
 - **npm** – Gestione delle dipendenze del progetto.
@@ -33,8 +32,8 @@ L’utente non può creare, modificare o cancellare record.
 
 ## Requisiti minimi (obbligatori) ✅
 
-- Risorsa definita nel file types.ts posizionato nella cartella *backend*  
-- Home page con la lista di tutti i vinili con:
+- Gestione di una risorsa definita in types.ts *backend*  
+- Lista dei record, che mostra solo le proprietà principali title e category, e include:
   - dettaglio delle proprietà *title* e *category*  
   - barra di ricerca (per *title*)  
   - filtro per *category*  

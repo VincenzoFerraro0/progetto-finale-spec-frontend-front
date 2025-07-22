@@ -1,50 +1,36 @@
-import { useState, useEffect } from "react"; // Importa gli hook useState per la gestione dello stato e useEffect per effetti collaterali
-import { useGlobalContext } from "../context/GlobalContext"; // Importa il contesto globale per accedere a dati globali, come la lista di tutti gli eventi
-import useEvents from "../hooks/useEvents"; // Importa il custom hook useEvents per il fetching dei dettagli di un singolo evento
-import EventCardDetails from "../components/EventCardDetails"; // Importa il componente EventCardDetails per visualizzare i dettagli di un evento
-import { Link } from "react-router-dom"; // Importa Link per la navigazione tra le pagine
+import { useState, useEffect } from "react"; 
+import { Link } from "react-router-dom";
+import { useGlobalContext } from "../context/GlobalContext"; 
+import useEvents from "../hooks/useEvents"; 
+import EventCardDetails from "../components/EventCardDetails"; 
 
-// Componente principale della pagina del comparatore
 export default function ComparatorPage() {
-    // Estrae la lista completa degli eventi dal contesto globale
+
     const { events } = useGlobalContext();
 
-    // Stato locale per memorizzare l'ID del primo evento selezionato per il confronto
     const [firstId, setFirstId] = useState("");
-    // Stato locale per memorizzare l'ID del secondo evento selezionato per il confronto
     const [secondId, setSecondId] = useState("");
 
-    // Inizializza due istanze separate del custom hook useEvents.
-    // Questo è fondamentale per poter gestire il fetching e lo stato di due eventi diversi in parallelo.
-    const firstEventHook = useEvents(); // Gestirà i dati del primo evento
-    const secondEventHook = useEvents(); // Gestirà i dati del secondo evento
+   
+    const firstEventHook = useEvents();
+    const secondEventHook = useEvents(); 
 
-    // useEffect per il primo evento: si attiva ogni volta che firstId cambia.
-    // Richiede i dettagli completi dell'evento tramite fetchSingleEvent del primo hook.
-    // NOTA: Se il tuo useEvents hook non usa useCallback per fetchSingleEvent,
-    // dovresti includere 'firstEventHook.fetchSingleEvent' nelle dipendenze per evitare warning o loop.
-    // Ho rimosso 'firstEventHook.fetchSingleEvent' dalle dipendenze qui perché presumiamo
-    // che la funzione fetchSingleEvent all'interno di useEvents sia stabile (memoizzata con useCallback).
+
     useEffect(() => {
         firstEventHook.fetchSingleEvent(firstId);
-    }, [firstId]); // Dipendenza solo da firstId, se fetchSingleEvent è stabile
+    }, [firstId]); 
 
-    // useEffect per il secondo evento: si attiva ogni volta che secondId cambia.
-    // Richiede i dettagli completi dell'evento tramite fetchSingleEvent del secondo hook.
-    // Stessa nota sulle dipendenze di cui sopra.
     useEffect(() => {
         secondEventHook.fetchSingleEvent(secondId);
-    }, [secondId]); // Dipendenza solo da secondId, se fetchSingleEvent è stabile
+    }, [secondId]); 
 
-    // Funzione per resettare entrambe le selezioni degli eventi.
-    // Imposta gli ID a stringhe vuote, il che a sua volta triggera gli useEffect
-    // e (grazie alla logica interna di useEvents) resetta i dati dei singoli eventi a null.
+
     const handleClear = () => {
         setFirstId('');
         setSecondId('');
     };
 
-    // Console log utile per il debug, mostra gli ID degli eventi selezionati ad ogni render.
+
     console.log("Rendering ComparatorPage with firstId:", firstId, "and secondId:", secondId);
 
     return (
@@ -123,28 +109,25 @@ export default function ComparatorPage() {
             {/* Sezione per la visualizzazione delle EventCard affiancate */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Pannello per il primo evento */}
-                {firstId === "" ? ( // Se nessun evento è stato selezionato per il primo slot
+                {firstId === "" ? ( 
                     <div className="flex items-center justify-center min-h-[300px] bg-gray-900/50 border border-gray-800 rounded-lg p-6 text-gray-400 text-center">
                         Seleziona il primo evento per confrontarlo.
                     </div>
-                ) : ( // Se un ID è stato selezionato
-                    firstEventHook.singleEvent?.event && ( // Renderizza EventCard SOLO SE i dati dell'evento sono arrivati e non sono nulli
+                ) : ( 
+                    firstEventHook.singleEvent?.event && ( 
                         <EventCardDetails event={firstEventHook.singleEvent.event} />
                     )
-                    // Se firstId è selezionato ma firstEventHook.singleEvent?.event è null (es. in fase di caricamento, o errore, o ID non valido),
-                    // questo blocco non renderizzerà nulla, lasciando lo spazio vuoto.
                 )}
 
                 {/* Pannello per il secondo evento */}
-                {secondId === "" ? ( // Se nessun evento è stato selezionato per il secondo slot
+                {secondId === "" ? ( 
                     <div className="flex items-center justify-center min-h-[300px] bg-gray-900/50 border border-gray-800 rounded-lg p-6 text-gray-400 text-center">
                         Seleziona il secondo evento per confrontarlo.
                     </div>
-                ) : ( // Se un ID è stato selezionato
-                    secondEventHook.singleEvent?.event && ( // Renderizza EventCardDetails SOLO SE i dati dell'evento sono arrivati e non sono nulli
+                ) : ( 
+                    secondEventHook.singleEvent?.event && ( 
                         <EventCardDetails event={secondEventHook.singleEvent.event} />
                     )
-                    // Comportamento simile al primo pannello per i casi di caricamento/errore/dati mancanti.
                 )}
             </div>
         </div>

@@ -1,4 +1,4 @@
-import { createContext, useContext, useCallback, useMemo, useState, use } from "react";
+import { createContext, useContext, useCallback, useMemo, useState, } from "react";
 
 import useEvents from "../hooks/useEvents";
 import { useNavigate } from "react-router-dom";
@@ -7,13 +7,7 @@ import useStorage from "../hooks/useStorage";
 // Crea il contesto globale per condividere lo stato tra componenti
 const GlobalContext = createContext();
 
-/**
- * Funzione di debounce per ritardare l'esecuzione di una callback
- * Utile per evitare troppe chiamate durante la digitazione
- * @param {Function} callback - La funzione da eseguire
- * @param {number} delay - Il ritardo in millisecondi
- * @returns {Function} - La funzione con debounce applicato
- */
+//Funzione di debounce per ritardare l'esecuzione di una callback
 function debounce(callback, delay) {
     let timer;
     return (value) => {
@@ -27,16 +21,11 @@ function debounce(callback, delay) {
 /**
  * Provider del contesto globale
  * Gestisce lo stato condiviso dell'applicazione per eventi, ricerca e filtri
- * @param {Object} props - Le props del componente
- * @param {React.ReactNode} props.children - I componenti figli
  */
 export function GlobalProvider({ children }) {
-
-    const navigate = useNavigate()
     // Recupera tutti gli eventi tramite hook personalizzato
     const { events } = useEvents();
 
-    //! STATI
     // State per la query di ricerca
     const [searchQuery, setSearchQuery] = useState("");
     // State per la categoria selezionata nel filtro
@@ -45,36 +34,33 @@ export function GlobalProvider({ children }) {
     const [sortField, setSortField] = useState("title");
     // State per la direzione di ordinamento ("asc" o "desc")
     const [sortOrder, setSortOrder] = useState("asc");
-    
-    // State per la wishList persistente su localStorage
-    const [wishList, setWishList] = useStorage("wishList", [])
 
     // Funzione di ricerca con debounce per evitare troppe chiamate durante la digitazione
     // Ritarda l'esecuzione di 500ms dopo l'ultimo carattere digitato
     const debaunceSearch = useCallback(debounce(setSearchQuery, 500), []);
 
+    // State per la wishList persistente su localStorage
+    const [wishList, setWishList] = useStorage("wishList", [])
 
-    // Memo per calcolare eventi filtrati e ordinati
-    // Si ricalcola solo quando cambiano le dipendenze
+    //! funzione che gestisce la ricerca ed il riordinamento degli eventi 
     const filteredAndSortedEvents = useMemo(() => {
-        return [...events] // Crea una copia dell'array per evitare mutazioni
-            .filter(t =>
-                // Filtro per titolo: controlla se il titolo contiene la query di ricerca (case-insensitive)
-                t.title?.toLowerCase().includes(searchQuery.toLowerCase()) &&
-                // Filtro per categoria: mostra tutti se nessuna categoria è selezionata, altrimenti filtra per categoria
-                (selectedCategory === "" || t.category === selectedCategory)
+        return [...events]
+            .filter(e =>
+                // Filtro per titolo: controlla se il titolo contiene la query di ricerca 
+                e.title?.toLowerCase().includes(searchQuery.toLowerCase()) &&
+
+                // Filtro per categoria: se nessuna categoria è selezionata (""), accetta tutte;
+                // altrimenti accetta solo quelle che corrispondono alla categoria selezionata
+                (selectedCategory === "" || e.category === selectedCategory)
             )
             .sort((a, b) => {
-                // Estrae i valori per il confronto, convertendoli in lowercase per ordinamento case-insensitive
+                // Estrae i valori per il confronto, convertendoli in lowercase per ordinamento
                 const aValue = a[sortField]?.toLowerCase() ?? "";
                 const bValue = b[sortField]?.toLowerCase() ?? "";
 
-                // Ordina in base alla direzione specificata
-                if (sortOrder === "asc") {
-                    return aValue.localeCompare(bValue); // Ordinamento crescente
-                } else {
-                    return bValue.localeCompare(aValue); // Ordinamento decrescente
-                }
+                return sortOrder === "asc"
+                    ? aValue.localeCompare(bValue)
+                    : bValue.localeCompare(aValue);
             });
     }, [searchQuery, selectedCategory, events, sortField, sortOrder]); // Dipendenze per la ricalcolazione
 
@@ -97,7 +83,7 @@ export function GlobalProvider({ children }) {
         return wishList.some((item) => item.id === event.id);
     }, [wishList]); // Dipendenza per evitare ricomputazioni inutili
 
-
+    const navigate = useNavigate()
     // Svuota la wishList e rimanda alla home
     const clearWishList = () => {
         setWishList([])

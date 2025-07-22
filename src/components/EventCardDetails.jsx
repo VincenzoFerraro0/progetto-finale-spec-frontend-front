@@ -13,15 +13,15 @@ export default function EventCardDetails({ event }) {
             {/* Sezione immagine dell'evento */}
             <div className="relative mb-8">
                 <BtnWishList event={event} /> {/* Pulsante per aggiungere ai preferiti */}
-                <figure className="w-full h-96 overflow-hidden"> {/* Aggiunto w-full, h-96 e overflow-hidden */}
-                    {/* Immagine di copertina con overlay gradient */}
+                <figure className="w-full h-96 overflow-hidden">
+                    {/* Immagine di copertina  */}
                     <img
                         src={event.coverImage}
                         alt={event.title}
-                        className="w-full h-full object-cover" // Aggiunto w-full, h-full e object-cover
+                        className="w-full h-full object-cover"
                     />
                 </figure>
-                
+
                 {/* Barra decorativa con gradient */}
                 <GradientBar />
             </div>
@@ -50,9 +50,9 @@ export default function EventCardDetails({ event }) {
 
                     {/* Sezione dettagli evento con design a blocchi */}
                     <div className="space-y-6">
-                        
+
                         {/* Data evento con formattazione italiana */}
-                        <div className="border-l-4 border-gradient-to-b from-[#1f103d] to-[#e6007e] pl-4">
+                        <div className="border-l-4 pl-4">
                             <h3 className="text-sm uppercase tracking-widest font-mono text-gray-400 mb-1">
                                 Data
                             </h3>
@@ -68,7 +68,7 @@ export default function EventCardDetails({ event }) {
                         </div>
 
                         {/* Luogo evento */}
-                        <div className="border-l-4 border-gradient-to-b from-[#1f103d] to-[#e6007e] pl-4">
+                        <div className="border-l-4 pl-4">
                             <h3 className="text-sm uppercase tracking-widest font-mono text-gray-400 mb-1">
                                 Luogo
                             </h3>
@@ -125,6 +125,8 @@ export default function EventCardDetails({ event }) {
                         <Link
                             to={event.ticketLink}
                             className={`text-white bg-gradient-to-r from-[#e6007e] to-[#1f103d] hover:from-[#1f103d] hover:to-[#e6007e] transition-colors duration-300 px-6 py-3 rounded-full text-lg font-semibold uppercase tracking-wider flex items-center justify-center`}
+                            target="_blank" //dice al browser di aprire il link in una nuova scheda.
+                            rel="noopener noreferrer" //è una best practice di sicurezza, soprattutto per evitare che la pagina aperta possa accedere alla window.opener della tua app.
                         >
                             acquista biglietti
                         </Link>

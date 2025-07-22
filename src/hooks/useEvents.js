@@ -29,12 +29,8 @@ export default function useEvents() {
                 // Aggiorna lo state con i dati ricevuti
                 setEvents(data)
             } catch (error) {
-                // Gestione degli errori con controllo del tipo
-                if (error instanceof Error) {
-                    console.error(error.message);
-                } else {
-                    console.error("Errore sconosciuto", error);
-                }
+               console.log(error)
+               throw new Error(`Errore nel recupero degli eventi `);
             }finally {
                 // Imposta isLoading a false dopo il fetch
                 setIsLoading(false);

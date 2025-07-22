@@ -7,7 +7,7 @@ import EventCard from "../components/EventCard"
 import useEvents from "../hooks/useEvents"
 
 // Componente principale che mostra la lista degli eventi
-export default function EventsList() {
+export default function HomePage() {
     // Recupera la lista di eventi filtrati e ordinati dal contesto globale
     const { filteredAndSortedEvents } = useGlobalContext()
     const { isLoading } = useEvents()
@@ -31,7 +31,8 @@ export default function EventsList() {
                         <p className="text-center text-gray-400">Caricamento in corso...</p>
                     ) : filteredAndSortedEvents.length === 0 ? (
                         <p className="text-center text-gray-400">nessun risultato trovato</p>
-                    ) : (
+                    ) :
+                     (
                         // Mappa degli eventi da visualizzare
                         filteredAndSortedEvents.map((event) => {
                             return (

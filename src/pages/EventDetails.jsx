@@ -31,7 +31,7 @@ export default function EventDetails() {
         return (
             <div className="min-h-screen bg-black text-white p-6">
                 <div className="max-w-4xl mx-auto">
-                    <p className="text-center text-gray-400">Caricamento evento in corso...</p>
+                    <p className="text-center text-gray-400">Evento non trovato</p>
                 </div>
             </div>
         )

@@ -22,7 +22,7 @@ export default function ({ event }) {
             {/* Barra decorativa sotto titolo e categoria */}
             <GradientBar />
 
-            {/* Link per visualizzare i dettagli */}
+            {/* Link per visualizzare il singolo evento */}
             <Link
                 to={`/events/${event.id}`}
                 className="self-center mt-4 bg-white text-black hover:bg-[#008cff] hover:text-white font-bold py-2 px-4 

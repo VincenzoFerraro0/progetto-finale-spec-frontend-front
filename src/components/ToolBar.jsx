@@ -1,8 +1,7 @@
-import {  useGlobalContext } from "../context/GlobalContext";
-import {  useMemo } from "react";
-
+import { useGlobalContext } from "../context/GlobalContext";
 
 export default function ToolBar() {
+    
     const {
         debaunceSearch,
         setSelectedCategory,
@@ -12,14 +11,12 @@ export default function ToolBar() {
     } = useGlobalContext()
 
 
-    const categories = useMemo(() => {
-        return events.reduce((acc, event) => {
-            if (!acc.includes(event.category)) {
-                acc.push(event.category);
-            }
-            return acc;
-        }, []);
-    }, [events]);
+    const categories = events.reduce((acc, event) => {
+        if (!acc.includes(event.category)) {
+            acc.push(event.category);
+        }
+        return acc;
+    }, []);
 
     return (
         <div className="flex flex-col md:flex-row items-center gap-4 mb-8">
