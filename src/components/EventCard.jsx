@@ -24,7 +24,7 @@ export default function ({ event }) {
 
             {/* Link per visualizzare il singolo evento */}
             <Link
-                to={`/events/${event.id}`}
+                to={`/event/${event.id}`}
                 className="self-center mt-4 bg-white text-black hover:bg-[#008cff] hover:text-white font-bold py-2 px-4 
                             rounded-full shadow-lg hover:shadow transition duration-300 ease-in-out
                             text-sm uppercase tracking-wider cursor-pointer"

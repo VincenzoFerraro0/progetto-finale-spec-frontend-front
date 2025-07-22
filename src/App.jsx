@@ -16,7 +16,7 @@ function App() {
         <Route path="/" Component={HomePage} />
         <Route path="/comparator" Component={ComparatorPage} />
         <Route path="/wishlist" Component={WishlistPage} />
-        <Route path="/events/:id" Component={EventDetails} />
+        <Route path="/event/:id" Component={EventDetails} />
       </Route>
     </Routes>
   )
