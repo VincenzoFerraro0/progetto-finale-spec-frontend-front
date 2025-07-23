@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom"
 import DeafaultLayout from "./layout/DeafaultLayout"
 
 
-//Pagine
+//!Pagine
 import HomePage from "./pages/HomePage"
 import EventDetails from "./pages/EventDetails"
 import ComparatorPage from "./pages/ComparatorPage"

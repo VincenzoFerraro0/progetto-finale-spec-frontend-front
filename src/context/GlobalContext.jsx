@@ -39,8 +39,7 @@ export function GlobalProvider({ children }) {
     // Ritarda l'esecuzione di 500ms dopo l'ultimo carattere digitato
     const debaunceSearch = useCallback(debounce(setSearchQuery, 500), []);
 
-    // State per la wishList persistente su localStorage
-    const [wishList, setWishList] = useStorage("wishList", [])
+
 
     //! funzione che gestisce la ricerca ed il riordinamento degli eventi 
     const filteredAndSortedEvents = useMemo(() => {
@@ -66,6 +65,9 @@ export function GlobalProvider({ children }) {
 
 
     //! Funzioni per gestire la wish list degli eventi
+    // State per la wishList persistente su localStorage
+    const [wishList, setWishList] = useStorage("wishList", [])
+    
     // Aggiunge un evento alla wish list se non è già presente
     const addWishList = (event) => {
         if (!wishList.some((item) => item.id === event.id)) {
@@ -83,12 +85,9 @@ export function GlobalProvider({ children }) {
         return wishList.some((item) => item.id === event.id);
     }, [wishList]); // Dipendenza per evitare ricomputazioni inutili
 
-    const navigate = useNavigate()
-    // Svuota la wishList e rimanda alla home
+    // Svuota la wishList
     const clearWishList = () => {
         setWishList([])
-        navigate('/')
-
     }
 
     // Oggetto valore che contiene tutto lo stato e le funzioni da condividere
@@ -118,8 +117,6 @@ export function GlobalProvider({ children }) {
 /**
  * Hook personalizzato per utilizzare il contesto globale
  * Include controllo di errore per assicurarsi che sia usato all'interno del provider
- * @returns {Object} - Il valore del contesto globale
- * @throws {Error} - Se utilizzato fuori dal GlobalProvider
  */
 export function useGlobalContext() {
     const context = useContext(GlobalContext);

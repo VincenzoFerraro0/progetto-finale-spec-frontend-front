@@ -25,30 +25,27 @@ export default function EventDetails() {
 
     // Estrae l'oggetto evento dalla risposta del hook
     const event = singleEvent?.event;
+ 
 
     // Stato di caricamento: mostra un messaggio mentre i dati vengono recuperati
     if (!event) {
         return (
-            <div className="min-h-screen bg-black text-white p-6">
-                <div className="max-w-4xl mx-auto">
-                    <p className="text-center text-gray-400">Evento non trovato</p>
-                </div>
-            </div>
+            <p className="text-center text-gray-400">Caricamento in corso...</p>
         )
     }
 
     // Render principale del componente
     return (
         <div className="max-w-4xl mx-auto">
-            {/* Header con pulsante di navigazione per tornare alla lista eventi */}
             <div className="mb-8">
+                {/* Link di navigazione per tornare alla lista eventi */}
                 <Link
                     to="/"
                     className="inline-flex items-center text-gray-400 hover:text-white transition-colors duration-300 mb-6"
                 >
                     {/* Icona freccia sinistra */}
                     <span className="text-xl mr-2">←</span>
-                    {/* Testo del link con stile mono */}
+                    {/* Testo del link con stile mono  */}
                     <span className="uppercase tracking-wide text-sm font-mono">torna agli eventi</span>
                 </Link>
             </div>

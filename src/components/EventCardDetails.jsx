@@ -5,7 +5,6 @@ import BtnWishList from "./BtnWishList";
 /**
  * Componente per visualizzare i dettagli completi di un evento
  * Mostra immagine, informazioni principali, dettagli e pulsante per l'acquisto biglietti
- * * @param {Object} event - Oggetto contenente tutti i dati dell'evento
  */
 export default function EventCardDetails({ event }) {
     return (
@@ -21,11 +20,9 @@ export default function EventCardDetails({ event }) {
                         className="w-full h-full object-cover"
                     />
                 </figure>
-
                 {/* Barra decorativa con gradient */}
                 <GradientBar />
             </div>
-
             {/* Sezione informazioni evento */}
             <div className="flex flex-col justify-between">
                 <div>
@@ -33,24 +30,20 @@ export default function EventCardDetails({ event }) {
                     <h1 className="text-4xl font-bold mb-6 text-white uppercase tracking-wider leading-tight">
                         {event.title}
                     </h1>
-
                     {/* Badge categoria evento */}
                     <div className="mb-6">
                         <span className="inline-block bg-gray-900/50 border border-gray-800 px-4 py-2 text-gray-400 text-sm uppercase tracking-widest font-mono">
                             {event.category}
                         </span>
                     </div>
-
                     {/* Descrizione dettagliata dell'evento */}
                     <div className="mb-8">
                         <p className="text-gray-300 leading-relaxed text-lg">
                             {event.description}
                         </p>
                     </div>
-
                     {/* Sezione dettagli evento con design a blocchi */}
                     <div className="space-y-6">
-
                         {/* Data evento con formattazione italiana */}
                         <div className="border-l-4 pl-4">
                             <h3 className="text-sm uppercase tracking-widest font-mono text-gray-400 mb-1">
@@ -66,7 +59,6 @@ export default function EventCardDetails({ event }) {
                                 })}
                             </p>
                         </div>
-
                         {/* Luogo evento */}
                         <div className="border-l-4 pl-4">
                             <h3 className="text-sm uppercase tracking-widest font-mono text-gray-400 mb-1">
@@ -76,9 +68,7 @@ export default function EventCardDetails({ event }) {
                                 {event.location}
                             </p>
                         </div>
-
-                        {/* Lista artisti partecipanti - rendering condizionale */}
-                        {event.artists && event.artists.length > 0 && (
+                        {/* Lista artisti */}
                             <div className="border-l-4 pl-4">
                                 <h3 className="text-sm uppercase tracking-widest font-mono text-gray-400 mb-1">
                                     Artisti
@@ -95,10 +85,7 @@ export default function EventCardDetails({ event }) {
                                     ))}
                                 </div>
                             </div>
-                        )}
-
-                        {/* Tags evento - rendering condizionale */}
-                        {event.tags && event.tags.length > 0 && (
+                        {/* Tags evento  */}
                             <div className="border-l-4 pl-4">
                                 <h3 className="text-sm uppercase tracking-widest font-mono text-gray-400 mb-1">
                                     Tags
@@ -115,12 +102,9 @@ export default function EventCardDetails({ event }) {
                                     ))}
                                 </div>
                             </div>
-                        )}
                     </div>
                 </div>
-
-                {/* Pulsante per acquisto biglietti - rendering condizionale */}
-                {event.ticketLink && (
+                {/* Pulsante per acquisto biglietti  */}
                     <div className="pt-6">
                         <Link
                             to={event.ticketLink}
@@ -131,7 +115,6 @@ export default function EventCardDetails({ event }) {
                             acquista biglietti
                         </Link>
                     </div>
-                )}
             </div>
         </div>
     )

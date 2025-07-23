@@ -18,14 +18,13 @@ export default function WishlistPage() {
                 >
                     Torna alla lista
                 </Link>
-                {wishList.length > 0 && (
-                    <button
-                        onClick={clearWishList}
-                        className="bg-red-600 text-white font-bold py-2 px-4 rounded-full shadow hover:bg-red-700 transition duration-300 ease-in-out text-sm uppercase tracking-wider cursor-pointer"
-                    >
-                        Svuota lista
-                    </button>
-                )}
+
+                <button
+                    onClick={clearWishList}
+                    className="bg-red-600 text-white font-bold py-2 px-4 rounded-full shadow hover:bg-red-700 transition duration-300 ease-in-out text-sm uppercase tracking-wider cursor-pointer"
+                >
+                    Svuota lista
+                </button>
             </div>
 
             {wishList.length === 0 ? (
