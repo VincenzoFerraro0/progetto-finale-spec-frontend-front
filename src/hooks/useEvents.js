@@ -14,8 +14,6 @@ export default function useEvents() {
     // State per memorizzare un singolo evento selezionato
     const [singleEvent, setSingleEvent] = useState(null);
 
-    const [isLoading, setIsLoading] = useState(true);
-
     // Effect che viene eseguito al mount del componente per caricare tutti gli eventi
     useEffect(() => {
         /**
@@ -31,9 +29,6 @@ export default function useEvents() {
             } catch (error) {
                console.log(error)
                throw new Error(`Errore nel recupero degli eventi `);
-            }finally {
-                // Imposta isLoading a false dopo il fetch
-                setIsLoading(false);
             }
         };
         // Esegue la funzione di fetch
@@ -53,14 +48,13 @@ export default function useEvents() {
             if (!response.ok) {
                 throw new Error(`Errore HTTP: ${response.status}`);
             }
-           
             // Converte la risposta in JSON
             const data = await response.json();
             // Aggiorna lo state con l'evento recuperato
             setSingleEvent(data);
-        } catch (err) {
+        } catch (error) {
             // Log dell'errore e reset dello state in caso di fallimento
-            console.error("Errore nel recupero dell'evento:", err);
+            console.error("Errore nel recupero dell'evento:", error);
             setSingleEvent(null); 
         }
     };
@@ -70,6 +64,5 @@ export default function useEvents() {
         events,              // Lista di tutti gli eventi
         singleEvent,         // Singolo evento selezionato
         fetchSingleEvent,    // Funzione per recuperare un singolo evento
-        isLoading
     };
 }

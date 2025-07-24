@@ -10,13 +10,11 @@ import useEvents from "../hooks/useEvents"
 export default function HomePage() {
     // Recupera la lista di eventi filtrati e ordinati dal contesto globale
     const { filteredAndSortedEvents } = useGlobalContext()
-    const { isLoading } = useEvents()
 
     return (
         <>
-
             {/* Container centrato con larghezza massima */}
-            <div className="max-w-4xl mx-auto text-white">
+            <div className="text-white max-w-6xl mx-auto px-4 py-12">
                 {/* Titolo della pagina */}
                 <h1 className="text-4xl font-bold mb-12 text-center tracking-wider uppercase">
                     prossimi eventi
@@ -27,12 +25,9 @@ export default function HomePage() {
 
                 {/* Griglia per la visualizzazione degli eventi */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {isLoading ? (
-                        <p className="text-center text-gray-400">Caricamento in corso...</p>
-                    ) : filteredAndSortedEvents.length === 0 ? (
+                    {filteredAndSortedEvents.length === 0 ? (
                         <p className="text-center text-gray-400">nessun risultato trovato</p>
-                    ) :
-                     (
+                    ) : (
                         // Mappa degli eventi da visualizzare
                         filteredAndSortedEvents.map((event) => {
                             return (

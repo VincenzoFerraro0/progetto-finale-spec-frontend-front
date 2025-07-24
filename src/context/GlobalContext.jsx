@@ -1,7 +1,5 @@
 import { createContext, useContext, useCallback, useMemo, useState, } from "react";
-
 import useEvents from "../hooks/useEvents";
-import { useNavigate } from "react-router-dom";
 import useStorage from "../hooks/useStorage";
 
 // Crea il contesto globale per condividere lo stato tra componenti
@@ -17,6 +15,7 @@ function debounce(callback, delay) {
         }, delay);
     };
 }
+
 
 /**
  * Provider del contesto globale
